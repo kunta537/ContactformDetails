@@ -1,0 +1,128 @@
+<fieldset>
+<legend style="font-weight:bold">Contact Form</legend>
+<div class="row">
+<div class= "col-sm-7  custom-row jumbotron">
+<form class="form-horizontal" [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+  <div class="form-group">
+    <label>
+    First Name*:
+  <input type="text" formControlName="fname">
+  <div *ngIf="contactForm.controls.fname.touched"  class="alert alert-danger">   
+      <div *ngIf="contactForm.controls.fname.errors">
+          First Name is required.
+        </div>
+  </div>
+  </label>
+  </div><br>
+  <div class="form-group">
+  <label>
+    Last Name:
+      <input type="text" formControlName="lname">
+  </label>
+  </div><br>
+  <div class="form-group">
+<label>
+  Email*
+  <input type="text" formControlName="email">
+  <div class="col-sm-3 text-danger" *ngIf="contactForm.controls.email.invalid && contactForm.controls.email.touched">    
+    Email is invalid
+  </div>
+</label>
+</div><br><br>
+  <div class="form-group">
+  <label>
+  Address:
+<textarea formControlName="address" class="address"></textarea>
+  </label>
+</div><br>
+  <div>
+  <button [disabled]="contactForm.invalid">Submit</button>
+  </div>
+</form>
+<h2>Get Details By Id</h2>
+<label>
+Enter your Id
+<input type="text" [(ngModel)]=id>
+</label>
+<button type="button" (click)="getDetailsById(id)">Get Details By Id</button><br><br>
+<button type="button" (click)="getDetails()">Get All Details</button>
+<div *ngIf="res">
+Response:
+<!-- <pre>{{ res | json }}</pre> -->
+<div class="container">
+<br/>
+<table class="table table-striped table-hover">
+<thead class="thead-deafult">
+  <tr>
+    <th>First Name </th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Address</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>{{res.fname}}</td>
+    <td>{{res.lname}}</td>
+      <td>{{res.email}}</td>
+    <td>{{res.address}}</td>
+  </tr>
+</tbody>
+</table> 
+</div>
+</div>
+
+<div *ngIf="details">
+Response for Get
+<!-- <pre>{{ details | json}}</pre> -->
+<div class="container">
+<br/>
+<table class="table table-striped table-hover">
+<thead class="thead-deafult">
+  <tr>
+    <th>First Name </th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Address</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let detail of pagedItems">
+    <td>{{detail.fname}}</td>
+    <td>{{detail.lname}}</td>
+      <td>{{detail.email}}</td>
+    <td>{{detail.address}}</td>
+  </tr>
+</tbody>
+</table> 
+</div>
+</div>
+
+<div *ngIf="detailId">
+Response for Get
+<!-- <pre>{{ detailId | json}}</pre> -->
+<div class="container">
+<br/>
+<table class="table table-striped table-hover">
+<thead class="thead-deafult">
+  <tr>
+    <th>First Name </th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Address</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>{{detailId.fname}}</td>
+    <td>{{detailId.lname}}</td>
+      <td>{{detailId.email}}</td>
+    <td>{{detailId.address}}</td>
+  </tr>
+</tbody>
+</table> 
+</div>
+</div>
+</div>
+</div>
+</fieldset>
