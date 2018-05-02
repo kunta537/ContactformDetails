@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Contactform
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.
@@ -29,3 +30,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## To run json server
 json-server mock-data.json
+=======
+# ContactformDetails
+Contact form details using mock json data with json server
+>>>>>>> origin/master
